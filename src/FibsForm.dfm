@@ -4,7 +4,7 @@ object fmFibs: TfmFibs
   ActiveControl = TaskGrid
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'FIBS Firebird/Interbase  BackUp Scheduler Ver.2.0.3'
+  Caption = 'FIBS Firebird/Interbase  BackUp Scheduler Ver.2.2.0'
   ClientHeight = 458
   ClientWidth = 660
   Color = clBtnFace
@@ -135,8 +135,8 @@ object fmFibs: TfmFibs
     BevelInner = bvLowered
     TabOrder = 0
     object ButtonLogs: TSpeedButton
-      Left = 152
-      Top = 5
+      Left = 146
+      Top = 4
       Width = 72
       Height = 74
       Hint = 'Backup Log'

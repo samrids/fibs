@@ -56,6 +56,7 @@ type
     JvLabel10: TJvLabel;
     JvLabel11: TJvLabel;
     JvLabel3: TJvLabel;
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

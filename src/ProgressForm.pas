@@ -95,7 +95,10 @@ begin
   else
   begin
     fmProgress.MessageText := AMessage;
-    fmProgress.Progress := AProgress;
+    if AProgress>0 then
+      fmProgress.Progress := AProgress;
+    if Assigned( ACloseEvent )then
+
     fmProgress.CloseEvent := ACloseEvent;
   end;
   fmProgress.RefreshProgress;
@@ -156,8 +159,12 @@ end;
 
 procedure TfmProgress.CloseProgress(Forced: Boolean);
 begin
+ try
   if Forced or (Self.iCloseDisabled = 0) then
     Self.Close;
+ except
+    raise;
+ end;
 end;
 
 procedure TfmProgress.DisableClose;
@@ -174,6 +181,7 @@ procedure TfmProgress.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   EnableTaskWindows(Self.pWindowList);
   Self.iCloseDisabled := 0;
+  fmProgress := nil;
   Action := caFree;
 end;
 

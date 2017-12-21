@@ -163,7 +163,7 @@ object fmTask: TfmTask
     Top = 232
     Width = 544
     Height = 224
-    ActivePage = tsOtherOptions
+    ActivePage = tsBackupTime
     TabOrder = 0
     object tsBackupTime: TTabSheet
       Caption = '             Backup Time             '
@@ -353,11 +353,6 @@ object fmTask: TfmTask
           TabOrder = 0
           OnClick = cbCompressBackupClick
           LinkedControls = <>
-          HotTrackFont.Charset = ANSI_CHARSET
-          HotTrackFont.Color = clWindowText
-          HotTrackFont.Height = -11
-          HotTrackFont.Name = 'Tahoma'
-          HotTrackFont.Style = []
         end
         object cbCompressLevel: TJvComboBox
           Left = 104
@@ -366,7 +361,6 @@ object fmTask: TfmTask
           Height = 21
           BevelKind = bkFlat
           Style = csDropDownList
-          ItemHeight = 13
           TabOrder = 1
           Text = 'None'
           Items.Strings = (
@@ -398,7 +392,6 @@ object fmTask: TfmTask
           Height = 21
           BevelKind = bkFlat
           Style = csDropDownList
-          ItemHeight = 13
           TabOrder = 0
           Text = 'Backups'
           Items.Strings = (
@@ -431,11 +424,6 @@ object fmTask: TfmTask
           Caption = 'Delete  All Out-of-Criteria Backups'
           TabOrder = 2
           LinkedControls = <>
-          HotTrackFont.Charset = ANSI_CHARSET
-          HotTrackFont.Color = clWindowText
-          HotTrackFont.Height = -11
-          HotTrackFont.Name = 'Tahoma'
-          HotTrackFont.Style = []
         end
       end
       object cbValidadeDatabase: TJvCheckBox
@@ -446,11 +434,6 @@ object fmTask: TfmTask
         Caption = 'Validate Database Before Backup'
         TabOrder = 3
         LinkedControls = <>
-        HotTrackFont.Charset = ANSI_CHARSET
-        HotTrackFont.Color = clWindowText
-        HotTrackFont.Height = -11
-        HotTrackFont.Name = 'Tahoma'
-        HotTrackFont.Style = []
       end
     end
     object tsOtherOptions: TTabSheet
@@ -523,11 +506,6 @@ object fmTask: TfmTask
           Caption = 'Use the last backup'#39's filename as parameter'
           TabOrder = 1
           LinkedControls = <>
-          HotTrackFont.Charset = ANSI_CHARSET
-          HotTrackFont.Color = clWindowText
-          HotTrackFont.Height = -11
-          HotTrackFont.Name = 'Tahoma'
-          HotTrackFont.Style = []
         end
         object cbExternalShowWindow: TJvCheckBox
           Left = 8
@@ -537,11 +515,6 @@ object fmTask: TfmTask
           Caption = 'Show Window'
           TabOrder = 2
           LinkedControls = <>
-          HotTrackFont.Charset = ANSI_CHARSET
-          HotTrackFont.Color = clWindowText
-          HotTrackFont.Height = -11
-          HotTrackFont.Name = 'Tahoma'
-          HotTrackFont.Style = []
         end
       end
     end
@@ -647,11 +620,6 @@ object fmTask: TfmTask
     TabOrder = 9
     OnClick = cbLocalConnectionClick
     LinkedControls = <>
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
   end
   object edUserName: TJvEdit
     Left = 96

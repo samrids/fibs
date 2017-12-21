@@ -33,11 +33,7 @@ object fmProgress: TfmProgress
       Height = 30
       AutoSize = False
       Caption = 'lbMessage'
-      HotTrackFont.Charset = ANSI_CHARSET
-      HotTrackFont.Color = clWindowText
-      HotTrackFont.Height = -11
-      HotTrackFont.Name = 'Tahoma'
-      HotTrackFont.Style = []
+      Transparent = True
     end
     object pbProgress: TJvSpecialProgress
       Left = 8

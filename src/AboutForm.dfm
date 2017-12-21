@@ -4,7 +4,7 @@ object fmAbout: TfmAbout
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = ' About'
-  ClientHeight = 368
+  ClientHeight = 384
   ClientWidth = 400
   Color = clBtnFace
   DefaultMonitor = dmMainForm
@@ -24,7 +24,7 @@ object fmAbout: TfmAbout
     Left = 0
     Top = 0
     Width = 400
-    Height = 368
+    Height = 384
     Align = alClient
     AutoSize = True
     Center = True
@@ -268,12 +268,13 @@ object fmAbout: TfmAbout
       800A28A2800A28A2800A28A2800A28A2800A28A2800A28A2800A28A2800A28A2
       800A28A2800A28A2800A28A290086834514000A4A28A433FFFD9}
     OnClick = BackJpegClick
+    ExplicitHeight = 370
   end
   object Bevel1: TBevel
     Left = 8
     Top = 248
     Width = 384
-    Height = 112
+    Height = 128
     Shape = bsFrame
   end
   object Label25: TLabel
@@ -524,11 +525,6 @@ object fmAbout: TfmAbout
     AutoSize = False
     Caption = 'Revised by Jones Marlos Pinheiro da Rosa'
     Transparent = True
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     URL = 'mailto:jonesmarlos@gmail.com'
   end
   object JvLabel2: TJvLabel
@@ -541,11 +537,6 @@ object fmAbout: TfmAbout
     AutoSize = False
     Caption = 'www.talatdogan.com'
     Transparent = True
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     URL = 'http://www.talatdogan.com'
   end
   object JvLabel4: TJvLabel
@@ -556,11 +547,6 @@ object fmAbout: TfmAbout
     Cursor = crHandPoint
     Caption = ' Dr.Patric Spanel,'
     Transparent = True
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     URL = 'http://www.jh-inst.cas.cz/~spanel'
   end
   object JvLabel5: TJvLabel
@@ -571,11 +557,6 @@ object fmAbout: TfmAbout
     Cursor = crHandPoint
     Caption = ' Dennis D. Spreen,'
     Transparent = True
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     URL = 'mailto:dennis@spreendigital.de'
   end
   object JvLabel6: TJvLabel
@@ -586,11 +567,6 @@ object fmAbout: TfmAbout
     Cursor = crHandPoint
     Caption = 'Dr.J'#252'rgen Rathlev,'
     Transparent = True
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     URL = 'http://www.ieap.uni-kiel.de/surface/ag-berndt/delphi.html'
   end
   object JvLabel7: TJvLabel
@@ -601,11 +577,6 @@ object fmAbout: TfmAbout
     Cursor = crHandPoint
     Caption = 'Orlando Arrocha,'
     Transparent = True
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     URL = 'mailto:oarrocha@hotmail.com'
   end
   object JvLabel8: TJvLabel
@@ -616,11 +587,6 @@ object fmAbout: TfmAbout
     Cursor = crHandPoint
     Caption = 'Carlos Barbosa,'
     Transparent = True
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     URL = 'http://www.carlosb.com'
   end
   object JvLabel9: TJvLabel
@@ -631,11 +597,6 @@ object fmAbout: TfmAbout
     Cursor = crHandPoint
     Caption = 'Retnyg,'
     Transparent = True
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     URL = 'http://krazz.net/retnyg'
   end
   object JvLabel10: TJvLabel
@@ -645,11 +606,6 @@ object fmAbout: TfmAbout
     Height = 13
     Caption = 'RXLib Team, Thomas Stutz and'
     Transparent = True
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
   end
   object JvLabel11: TJvLabel
     Left = 16
@@ -659,11 +615,6 @@ object fmAbout: TfmAbout
     Cursor = crHandPoint
     Caption = 'Lukas Gebauer.'
     Transparent = True
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     URL = 'http://www.ararat.cz/synapse/'
   end
   object JvLabel3: TJvLabel
@@ -674,11 +625,15 @@ object fmAbout: TfmAbout
     Cursor = crHandPoint
     Caption = 'Wilfried Mestdagh,'
     Transparent = True
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     URL = 'http://www.mestdagh.biz'
+  end
+  object Label1: TLabel
+    Left = 16
+    Top = 355
+    Width = 258
+    Height = 13
+    Caption = 'Compile and test on windows 10 (samrids@gmail.com)'
+    Transparent = True
+    OnClick = BackJpegClick
   end
 end

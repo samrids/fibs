@@ -91,7 +91,8 @@ type
     FArchiveDir: string;
   protected
     function StrToOEM(s: string): string;
-    function GetTempPath: string;
+//    function GetTempPath: string;
+    function GetTempDirectory: string;
     function ConvertFileTime(LFT: TFileTime): TDateTime;
     function IsConnectedToInternet: Boolean;
     function GetTempBackupFileSize(const ATempFile: string): string;
@@ -159,12 +160,20 @@ begin
     Result := ExtractFilePath(AFullPath);
 end;
 
-function TBackupTask.GetTempPath: string;
+{function TBackupTask.GetTempPath: string;
 var
   Buffer: array[0..MAX_PATH] of Char;
 begin
   Windows.GetTempPath(sizeof(Buffer), @Buffer);
   Result := Buffer;
+end;}
+
+function TBackupTask.GetTempDirectory: string;
+var
+  lpBuffer: array [0 .. MAX_PATH] of Char;
+begin
+  GetTempPath(MAX_PATH, @lpBuffer);
+  Result := StrPas(lpBuffer);
 end;
 
 function TBackupTask.GetTempBackupFileSize(const ATempFile: string): string;
@@ -418,12 +427,25 @@ begin
     begin
       repeat
         s := FloatToStr(FileDateToDateTime(SearchRec.Time), FSettings);
+       {$IF CompilerVersion = 7} // 7 = DELPHI 7
         PDot := Pos(DecimalSeparator, s);
+       {$ELSE}
+        PDot := Pos(FormatSettings.DecimalSeparator, s);
+       {$ENDIF}
         if (PDot = 0) then
+         {$IF CompilerVersion = 7} // 7 = DELPHI 7
           s := '0000000000' + s + DecimalSeparator + '0'
+         {$ELSE}
+          s := '0000000000' + s + FormatSettings.DecimalSeparator + '0'
+         {$ENDIF}
         else
           s := '0000000000' + s;
-        PDot := Pos(DecimalSeparator, s);
+          {$IF CompilerVersion = 7} // 7 = DELPHI 7
+                  PDot := Pos(DecimalSeparator, s);
+          {$ELSE}
+                  PDot := Pos(FormatSettings.DecimalSeparator, s);
+          {$ENDIF}
+
         s := copy(s, PDot - 10, 20);
         ts.Add(s + ' - ' + SearchRec.Name);
       until FindNext(SearchRec) <> 0;
@@ -855,9 +877,11 @@ begin
     FConnectionType := INTERNET_FLAG_PASSIVE; // Passive Mode
 
   FManAuto := AManAuto;
-  FGBakParams := AParams + ' -y ' + GetTempPath + '~fibs_gbakout_' + FBackupNo + '.tmp';
+  FGBakParams := AParams + ' -y ' + GetTempDirectory + '~fibs_gbakout_' + FBackupNo + '.tmp';
   FGFixParams := VParams;
-  FTempValFileName := GetTempPath + '~fibs_gfixout_' + FBackupNo + '.tmp';
+//  FTempValFileName := GetTempPath + '~fibs_gfixout_' + FBackupNo + '.tmp';
+  FTempValFileName := GetTempDirectory + '~fibs_gfixout_' + FBackupNo + '.tmp';
+
   FDir := ADir;
   FTaskName := UDFUtils.RemoveDatabaseSequenceTokens(ATaskName);
 
@@ -964,7 +988,7 @@ begin
   try
     //    try
     AStartTime := Now;
-    FTempDir := GetTempPath;
+    FTempDir := GetTempDirectory;// GetTempPath;
     TempOK := False;
     FErrorInfo := '';
     MailBody := 'Below listed errors has been encountered at the backup of Task ' + FTaskName + ' BackupNo :' + FBackupNo;
@@ -1072,7 +1096,7 @@ begin
     begin
       TX := TStringList.Create;
       try
-        TX.LoadFromFile(GetTempPath + '~fibs_gbakout_' + FBackupNo + '.tmp');
+        TX.LoadFromFile(GetTempDirectory(*GetTempPath*) + '~fibs_gbakout_' + FBackupNo + '.tmp');
         TX.Insert(0, '--------------------------------------------------------------------------------------   GBak.exe Output   ----------------------------------------------------------------------------------');
         TX.Add('---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
         for i := 0 to TX.Count - 1 do
@@ -1085,7 +1109,7 @@ begin
     end
     else
       GOut := '';
-    Windows.DeleteFile(PChar(GetTempPath + '~fibs_gbakout_' + FBackupNo + '.tmp'));
+    Windows.DeleteFile(PChar(GetTempDirectory(*GetTempPath*) + '~fibs_gbakout_' + FBackupNo + '.tmp'));
 
     CopyOK := False;
     CopyOK2 := False;

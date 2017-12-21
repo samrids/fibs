@@ -32,13 +32,13 @@ interface
 uses Classes, SysUtils;
 
 const
-  PrgName: string = 'FIBS 2.1.1';
+  PrgName: string = 'FIBS 2.2.0'; //Migration to TOkyo
   PrgInfo: string = 'Firebird-Interbase Backup Scheduler';
-  PrgCopyright: string = '(c) 2005-2015, Talat Dogan';
+  PrgCopyright: string = '(c) 2017-2019'; //Samrids
   PrgWebSite: string = 'www.talatdogan.com';
 
-  ReleaseInfo = '2.1.1';
-  ReleaseDate = '30.08.2015';
+  ReleaseInfo = '2.2.0'; //15/12/2017 Samrids
+  ReleaseDate = '8.12.2017';
   PrgRelease: string = 'Release : ' + ReleaseInfo + ' - ' + ReleaseDate;
 
   // ****************  See end of the unit for revision notes ******************//

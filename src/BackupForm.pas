@@ -30,7 +30,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, ExtCtrls, Spin, CheckLst, DBCtrls,
-  FibsData, JvExStdCtrls, JvCheckBox, JvExExtCtrls, JvBevel;
+  FibsData, JvExStdCtrls, JvCheckBox, JvExExtCtrls, JvBevel,
+  System.NetEncoding;
 
 type
   TfmBackup = class(TForm)
@@ -92,8 +93,11 @@ begin
   Self.edMirrorDir2.Text := FibsRef.qrTaskMIRROR2DIR.Value;
   Self.edMirrorDir3.Text := FibsRef.qrTaskMIRROR3DIR.Value;
   Self.edGbakDir.Text := FibsRef.qrOptionPATHTOGBAK.Value;
+  //showmessage(EncodeString('masterkey'));
   Self.edUserName.Text := FibsRef.qrTaskUSER.Value;
-  Self.edPassword.Text := Soap.EncdDecd.DecodeString(FibsRef.qrTaskPASSWORD.AsString);
+ // showmessage(  TNetEncoding.Base64.Decode(dmFibs.qrTaskPASSWORD.AsString) );
+  Self.edPassword.Text :=  Soap.EncdDecd.DecodeString(FibsRef.qrTaskPASSWORD.AsString);
+
   Self.cbValidateDatabase.Checked := FibsRef.qrTaskDOVAL.AsBoolean;
   Self.cbCreateZipBackup.Checked := FibsRef.qrTaskZIPBACKUP.AsBoolean;
   Self.edCompressLevel.Text := FibsRef.qrTaskCOMPRESS.Value;

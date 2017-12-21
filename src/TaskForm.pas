@@ -206,6 +206,7 @@ begin
   FibsRef.qrTaskMIRROR3DIR.Value := Self.edMirrorDir3.Text;
   FibsRef.qrTaskUSER.Value := Self.edUserName.Text;
   FibsRef.qrTaskPASSWORD.Value := Self.edPassword.Text;
+  FibsRef.qrTaskACTIVE.Value   := '0'; //default
   sTime := '';
   for i := 1 to 24 do
     if Self.clbTimeHours.State[i - 1] = cbChecked then

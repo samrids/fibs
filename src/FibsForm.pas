@@ -30,7 +30,8 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Mask, Buttons, ActiveX, ShellApi, Menus, ExtCtrls, Grids, DBGrids,
-  DBCtrls, FibsData, JvComponentBase, JvTrayIcon, JvThreadTimer;
+  DBCtrls, FibsData, JvComponentBase, JvTrayIcon, JvThreadTimer, DB,
+  System.NetEncoding;
 
 const
   WM_ICONTRAY = WM_USER + 1; // User-defined message
@@ -150,7 +151,7 @@ implementation
 uses Registry, Variants, StrUtils, PrefForm, TaskForm, UDFConst, UDFBackup,
   ProgressForm, BackupForm, UDFUtils, PlanListForm,
   AboutForm, LogForm, UDFPresets, DateUtils,
-  UDFServiceBackup, DB, Soap.EncdDecd;
+  UDFServiceBackup, Soap.EncdDecd;
 
 {$R *.DFM}
 
@@ -263,7 +264,12 @@ begin
           inc(AlarmInHour);
           AlarmDateTime := EncodeDateTime(AYear, AMonth, ADay, h, minu, ASecond, AMilliSecond);
           AlarmDateTimeStr := '000' + FloatToStr(AlarmDateTime - StartOfTheDay(AlarmDateTime));
-          PDot := Pos(DecimalSeparator, AlarmDateTimeStr);
+          {$IF CompilerVersion = 7} // 7 = DELPHI 7
+                  PDot := Pos(DecimalSeparator, AlarmDateTimeStr);
+          {$ELSE}
+                  PDot := Pos(FormatSettings.DecimalSeparator, AlarmDateTimeStr);
+          {$IFEND}
+
           if (PDot > 0) then
             Delete(AlarmDateTimeStr, 1, PDot - 4)
           else
@@ -486,7 +492,11 @@ begin
     FtpConnType := StrToIntDef(dmFibs.qrOptionFTPCONNTYPE.AsString, 0);
 
     CompDegree := dmFibs.qrTaskCOMPRESS.Value;
-    DeleteAll := dmFibs.qrTaskDELETEALL.AsInteger;
+    if dmFibs.qrTaskDELETEALL.AsString='T' then
+      DeleteAll := 1 //dmFibs.qrTaskDELETEALL.AsInteger; samrids 8/12/2017
+    else
+      DeleteAll := 0;
+
     PVAdet := dmFibs.qrTaskPVAL.AsInteger;
     PVUnit := -1; // For init
     if dmFibs.qrTaskPUNIT.Value = 'Backups' then
@@ -611,15 +621,17 @@ begin
       UseParams, ShowBatchWin, DoMirror, DoMirror2, DoMirror3, True,
       CompressBackup, DoValidate, PVAdet, PVUnit, DeleteAll, FtpConnType,
       BackupPriority, SequenceIncremented, ArchiveDir);
+      Backup.Resume;
   finally
     dmFibs.qrTask.Locate('TASKNO', Book, []);
     dmFibs.qrTask.EnableControls;
-    try
+    {try
       Backup.WaitFor;
     except
+      raise;
     end;
     if SequenceIncremented then
-      Self.BackUpDatabase(ARecNo, AAlarmDateTime);
+      Self.BackUpDatabase(ARecNo, AAlarmDateTime);  }
   end;
 end;
 
@@ -675,7 +687,13 @@ begin
   FullMirror2Path := MakeFull(Mirror2Path, BUNameExt);
   FullMirror3Path := MakeFull(Mirror3Path, BUNameExt);
 
-  DeleteAll := dmFibs.qrTaskDELETEALL.AsInteger;
+  //showmessage(dmFibs.qrTaskDELETEALL.Asstring);
+  if dmFibs.qrTaskDELETEALL.Asstring='T' then
+
+  DeleteAll := 1 //dmFibs.qrTaskDELETEALL.AsInteger;
+  else
+  DeleteAll := 0;
+
 
   BackupPriorityStr := dmFibs.qrOptionBPRIORTY.Value;
   BackupPriority := tpNormal; // For Init
@@ -966,7 +984,8 @@ begin
     MessageDlg('No task log to be viewed!', mtError, [mbOk], 0);
     Exit;
   end;
-  TfmLog.ShowLog(Self, dmFibs);
+  if fmLog=nil then  
+  fmLog := TfmLog.Create(Self, dmFibs);
 end;
 
 procedure TfmFibs.ActivateAllLeavedActive;
@@ -1222,7 +1241,7 @@ begin
     sMirrorDir2 := dmFibs.qrTaskMIRROR2DIR.Value;
     sMirrorDir3 := dmFibs.qrTaskMIRROR3DIR.Value;
     sUserName := dmFibs.qrTaskUSER.Value;
-    sPassword := Soap.EncdDecd.DecodeString(dmFibs.qrTaskPASSWORD.AsString);
+    sPassword :=  Soap.EncdDecd.DecodeString(dmFibs.qrTaskPASSWORD.AsString);
     sGbakDir := dmFibs.qrOptionPATHTOGBAK.Value;
     bCompressBackup := dmFibs.qrTaskZIPBACKUP.AsBoolean;
     sCompressLevel := dmFibs.qrTaskCOMPRESS.Value;

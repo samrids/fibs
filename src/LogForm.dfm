@@ -37,32 +37,6 @@ object fmLog: TfmLog
     ParentFont = False
     Layout = tlCenter
   end
-  object grLogText: TStringGrid
-    Left = 8
-    Top = 8
-    Width = 584
-    Height = 312
-    TabStop = False
-    Anchors = [akLeft, akTop, akRight, akBottom]
-    Color = 16252927
-    ColCount = 1
-    Ctl3D = False
-    DefaultColWidth = 5000
-    DefaultRowHeight = 16
-    FixedCols = 0
-    RowCount = 1
-    FixedRows = 0
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    GridLineWidth = 0
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine]
-    ParentCtl3D = False
-    ParentFont = False
-    TabOrder = 0
-  end
   object btClose: TButton
     Left = 496
     Top = 328
@@ -72,7 +46,7 @@ object fmLog: TfmLog
     Caption = '&Close'
     Default = True
     ModalResult = 1
-    TabOrder = 1
+    TabOrder = 0
   end
   object btPrint: TButton
     Left = 392
@@ -81,14 +55,17 @@ object fmLog: TfmLog
     Height = 25
     Anchors = [akRight, akBottom]
     Caption = '&Print'
-    TabOrder = 2
+    TabOrder = 1
     OnClick = btPrintClick
   end
-  object dlgPrint: TPrintDialog
-    Copies = 1
-    MaxPage = 9999
-    Options = [poPageNums, poSelection, poWarning, poDisablePrintToFile]
-    Left = 116
-    Top = 220
+  object Memo1: TMemo
+    Left = 8
+    Top = 8
+    Width = 584
+    Height = 314
+    Lines.Strings = (
+      'Memo1')
+    ScrollBars = ssBoth
+    TabOrder = 2
   end
 end

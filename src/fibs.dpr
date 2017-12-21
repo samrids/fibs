@@ -36,6 +36,7 @@ uses
   AboutForm in 'AboutForm.pas' {fmAbout},
   LogForm in 'LogForm.pas' {fmLog};
 
+//{$R 'UAC.res' 'UAC.rc'}
 {$R *.RES}
 
 begin

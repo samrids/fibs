@@ -2,8 +2,8 @@ object dmFibs: TdmFibs
   OldCreateOrder = True
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Height = 275
-  Width = 450
+  Height = 132
+  Width = 143
   object dsTask: TDataSource
     DataSet = qrTask
     Left = 20
@@ -261,62 +261,6 @@ object dmFibs: TdmFibs
     end
   end
   object qrOption: TJvCsvDataSet
-    FieldDefs = <
-      item
-        Name = 'PATHTOGBAK'
-        DataType = ftString
-        Size = 100
-      end
-      item
-        Name = 'TASKNO'
-        DataType = ftString
-        Size = 10
-      end
-      item
-        Name = 'LOGDIR'
-        DataType = ftString
-        Size = 100
-      end
-      item
-        Name = 'BPRIORTY'
-        DataType = ftString
-        Size = 10
-      end
-      item
-        Name = 'AUTORUN'
-        DataType = ftString
-        Size = 1
-      end
-      item
-        Name = 'SMTPSERVER'
-        DataType = ftString
-        Size = 250
-      end
-      item
-        Name = 'SENDERSMAIL'
-        DataType = ftString
-        Size = 250
-      end
-      item
-        Name = 'MAILUSERNAME'
-        DataType = ftString
-        Size = 80
-      end
-      item
-        Name = 'MAILPASSWORD'
-        DataType = ftString
-        Size = 80
-      end
-      item
-        Name = 'FTPCONNTYPE'
-        DataType = ftString
-        Size = 1
-      end
-      item
-        Name = 'ARCHIVEDIR'
-        DataType = ftString
-        Size = 100
-      end>
     FileName = 'D:\GitHub\fibs\bin\prefs.dat'
     AfterPost = qrOptionAfterPost
     CsvFieldDef = 

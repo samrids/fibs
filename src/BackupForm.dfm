@@ -338,11 +338,6 @@ object fmBackup: TfmBackup
     Enabled = False
     TabOrder = 13
     LinkedControls = <>
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     ReadOnly = True
   end
   object cbCreateZipBackup: TJvCheckBox
@@ -354,11 +349,6 @@ object fmBackup: TfmBackup
     Enabled = False
     TabOrder = 14
     LinkedControls = <>
-    HotTrackFont.Charset = ANSI_CHARSET
-    HotTrackFont.Color = clWindowText
-    HotTrackFont.Height = -11
-    HotTrackFont.Name = 'Tahoma'
-    HotTrackFont.Style = []
     ReadOnly = True
   end
   object btBackupNow: TButton
